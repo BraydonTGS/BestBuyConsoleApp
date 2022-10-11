@@ -62,7 +62,7 @@ namespace BestBuyPro.Printing
             foreach (var product in products)
             {
                 WriteLine("------------------------------------------------------------------------");
-                WriteLine($"> ProductId: {product.ProductId}\n> Name: {product.Name}\n> Price: {product.Price}\n> CategoryId: {product.CategoryId}\n> OnSale: {product.OnSale}\n> Stock Level: {product.StockLevel}");
+                WriteLine($"> ProductId: {product.ProductId}\n> Name: {product.Name}\n> Price: {product.Price:C2}\n> CategoryId: {product.CategoryId}\n> OnSale: {product.OnSale}\n> Stock Level: {product.StockLevel}");
                 WriteLine("------------------------------------------------------------------------");
                 Thread.Sleep(100);
             }
@@ -70,6 +70,24 @@ namespace BestBuyPro.Printing
             ForegroundColor = previousColor;
         }
 
+        // Display Product //
+
+
+        public static void DisplayProduct(Product product)
+        {
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Green;
+            WriteLine("\n> SEARCH RESULTS");
+            WriteLine("------------------------------------------------------------------------\n");
+            WriteLine($"----------> {product.Name} <---------------\n");
+            WriteLine($"> Product ID: {product.ProductId}\n");
+            WriteLine($"> Product Price: {product.Price:C2}\n");
+            WriteLine($"> Category ID: {product.CategoryId}\n");
+            WriteLine($"> Number On Sale: {product.OnSale}\n");
+            WriteLine($"> Product Stock Level: {product.CategoryId}\n");
+            WriteLine("------------------------------------------------------------------------");
+            ForegroundColor = previousColor;
+        }
 
         // Invalid Selection //
         public static void InvalidSelection()
@@ -78,10 +96,22 @@ namespace BestBuyPro.Printing
             ConsoleColor previousColor = ForegroundColor;
             ForegroundColor = ConsoleColor.Red;
             WriteLine("------------------------------------------------------------------------");
-            WriteLine("\n> Plesase Enter a Valid Selection!!! \n");
+            WriteLine("\n> PLEASE ENTER A VALID SELECTION <\n");
             WriteLine("------------------------------------------------------------------------");
             ForegroundColor = previousColor;
 
+        }
+
+        // Product Not Found //
+        public static void ProductNotFound()
+        {
+            PrintTitle();
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Red;
+            WriteLine("------------------------------------------------------------------------");
+            WriteLine("\n> ERROR: PRODUCT NOT FOUND <\n");
+            WriteLine("------------------------------------------------------------------------");
+            ForegroundColor = previousColor;
         }
 
 

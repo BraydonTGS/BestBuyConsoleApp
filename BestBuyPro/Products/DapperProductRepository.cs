@@ -24,6 +24,7 @@ namespace BestBuyPro.Products
         {
             return _connection.Query<Product>("SELECT * FROM Products p WHERE p.ProductID = @prodID", new { prodID = prodID });
         }
+
     }
 }
 

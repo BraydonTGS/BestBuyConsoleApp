@@ -45,7 +45,7 @@ namespace BestBuyPro.Menu
         public void ProductInfoMenu()
         {
             PrintingText.PrintTitle();
-            string prompt = "> Please Select From the Following Options: ";
+            string prompt = "Please Select From the Following Options: ";
             string[] options = { "Display Products", "Search for a Product", "Add a New Product", "Delete a Product", "Exit" };
             var menuIndex = PrintingText.PrintCustomMenu(prompt, options);
             switch (menuIndex)
@@ -107,20 +107,39 @@ namespace BestBuyPro.Menu
                 }
 
                 WriteLine($"\n> You entered * {num} *\n");
-                Write("> Use This Product ID Number? (Yes/No) ");
-                string userResponse = ReadLine().ToLower().Trim();
-                if (userResponse == "yes")
+                string prompt = "Use This Product ID Number? ";
+                string[] options = { "Yes", "No" };
+                var userResponse = PrintingText.PrintCustomMenu(prompt, options);
+                if (userResponse == 0)
                 {
                     PrintingText.Loading();
                     productID = num;
                     confirmed = true;
                 }
+                if (userResponse == 1)
+                {
+                    SearchForProduct();
+                }
             }
-            var product = Repo.SearchForProduct(productID);
-            PrintingText.DisplayProducts(product);
-            ForegroundColor = previousColor;
-            ReadKey();
+            var products = Repo.SearchForProduct(productID);
+            // Using Linq to grab the product from the collection based on prodId //
+            var product = products.FirstOrDefault(pro => pro.ProductId == Convert.ToString(productID));
+            if (product == null)
+            {
+                PrintingText.ProductNotFound();
+                PrintingText.Continue();
+                PrintingText.Loading();
+                ProductInfoMenu();
+            }
+            else
+            {
+                PrintingText.PrintTitle();
+                PrintingText.DisplayProduct(product);
+                PrintingText.Continue();
+                ForegroundColor = previousColor;
+            }
         }
+
         // Add a new Product //
         public void AddAProduct()
         {
