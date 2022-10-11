@@ -15,6 +15,7 @@
     <None Remove="Printing\" />
     <None Remove="World\" />
     <None Remove="User\" />
+    <None Remove="Employees\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\net6.0\appsettings.json" />
@@ -29,5 +30,6 @@
     <Folder Include="Printing\" />
     <Folder Include="World\" />
     <Folder Include="User\" />
+    <Folder Include="Employees\" />
   </ItemGroup>
 </Project>

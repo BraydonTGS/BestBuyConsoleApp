@@ -5,6 +5,19 @@ namespace BestBuyPro.Printing
     public static class PrintingText
     {
 
+        // Program Title //
+        public static void PrintTitle()
+        {
+            Clear();
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Green;
+
+            WriteLine(@" +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+
+ |P|r|o|d|u|c|t| |M|a|n|a|g|e|r| |3|0|0|0|
+ +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+");
+            ForegroundColor = previousColor;
+        }
+
         // Printing a Custom Menu //
         public static int PrintCustomMenu(string prompt, string[] options)
         {
@@ -41,7 +54,7 @@ namespace BestBuyPro.Printing
         // Exit the Game //
         public static void Exit()
         {
-            string exit = "\n> Thank you for Playing\n\n> Please Press Any Key To Exit: ";
+            string exit = "\n> Thank you.\n\n> Please Press Any Key To Exit: ";
             PrintCharacters(exit);
         }
 
