@@ -50,6 +50,7 @@ namespace BestBuyPro.Printing
                 Thread.Sleep(650);
                 Write(".");
             }
+            WriteLine();
             ForegroundColor = previousColor;
         }
 
@@ -70,7 +71,21 @@ namespace BestBuyPro.Printing
         }
 
 
-        // Exit the Game //
+        // Invalid Selection //
+        public static void InvalidSelection()
+        {
+            PrintTitle();
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Red;
+            WriteLine("------------------------------------------------------------------------");
+            WriteLine("\n> Plesase Enter a Valid Selection!!! \n");
+            WriteLine("------------------------------------------------------------------------");
+            ForegroundColor = previousColor;
+
+        }
+
+
+        // Exit the Program //
         public static void Exit()
         {
             string exit = "\n> Thank you.\n\n> Please Press Any Key To Exit: ";

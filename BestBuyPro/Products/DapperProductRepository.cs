@@ -20,9 +20,9 @@ namespace BestBuyPro.Products
             return _connection.Query<Product>("SELECT * FROM Products p ORDER BY p.ProductId DESC LIMIT 50;");
         }
 
-        public IEnumerable<Product> SearchForProduct()
+        public IEnumerable<Product> SearchForProduct(int prodID)
         {
-            return _connection.Query<Product>("SELECT * FROM Products p ORDER BY p.ProductId DESC LIMIT 50;");
+            return _connection.Query<Product>("SELECT * FROM Products p WHERE p.ProductID = @prodID", new { prodID = prodID });
         }
     }
 }

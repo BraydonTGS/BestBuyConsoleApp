@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Data.Common;
+using System.Net.NetworkInformation;
 using BestBuyPro.Connections;
 using BestBuyPro.Printing;
 using BestBuyPro.Products;
@@ -86,9 +87,39 @@ namespace BestBuyPro.Menu
         // Search for a Product //
         public void SearchForProduct()
         {
-            WriteLine("Test");
-            PrintingText.Continue();
-            ProductInfoMenu();
+            PrintingText.Loading();
+            PrintingText.PrintTitle();
+            int productID = 0;
+            bool confirmed = false;
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Green;
+            while (!confirmed)
+            {
+                PrintingText.PrintTitle();
+                Write("\n> Please Enter a Product Identification Number: ");
+                bool parse = int.TryParse(ReadLine(), out int num);
+                if (!parse)
+                {
+                    PrintingText.InvalidSelection();
+                    PrintingText.Continue();
+                    PrintingText.Loading();
+                    ProductInfoMenu();
+                }
+
+                WriteLine($"\n> You entered * {num} *\n");
+                Write("> Use This Product ID Number? (Yes/No) ");
+                string userResponse = ReadLine().ToLower().Trim();
+                if (userResponse == "yes")
+                {
+                    PrintingText.Loading();
+                    productID = num;
+                    confirmed = true;
+                }
+            }
+            var product = Repo.SearchForProduct(productID);
+            PrintingText.DisplayProducts(product);
+            ForegroundColor = previousColor;
+            ReadKey();
         }
         // Add a new Product //
         public void AddAProduct()

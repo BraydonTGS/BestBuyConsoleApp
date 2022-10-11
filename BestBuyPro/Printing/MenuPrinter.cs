@@ -42,7 +42,6 @@ namespace BestBuyPro.Printing
                 WriteLine($"\n{prefix} * {currentChoice} *");
 
             }
-            WriteLine();
             ResetColor();
         }
 
