@@ -11,6 +11,10 @@
     <None Remove="Microsoft.Extensions.Configuration.Json" />
     <None Remove="Dapper" />
     <None Remove="MySql.Data" />
+    <None Remove="Products\" />
+    <None Remove="Printing\" />
+    <None Remove="World\" />
+    <None Remove="User\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\net6.0\appsettings.json" />
@@ -19,5 +23,11 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="MySql.Data" Version="8.0.30" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Products\" />
+    <Folder Include="Printing\" />
+    <Folder Include="World\" />
+    <Folder Include="User\" />
   </ItemGroup>
 </Project>
