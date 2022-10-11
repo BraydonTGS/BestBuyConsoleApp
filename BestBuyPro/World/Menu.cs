@@ -402,10 +402,40 @@ namespace BestBuyPro.Menu
                     {
                         ForegroundColor = ConsoleColor.Red;
                         PrintingText.Caution();
-                        Write("TYPE (DELETE) TO CONTINUE ");
-                        var delete = ReadLine().ToUpper().Trim() ?? "ERROR";
+                        Write($"\nTYPE DELETE TO DELETE PRODUCT {productID} FROM THE DATABASE \n");
+                        WriteLine($"\nTYPE CANCEL TO GO BACK TO THE MAIN MENU \n");
 
+                        var deleteOrNot = ReadLine().ToUpper().Trim() ?? "ERROR";
+
+                        if (deleteOrNot == "DELETE")
+                        {
+                            PrintingText.Loading();
+                            Repo.DeleteProduct(productID);
+                            PrintingText.PrintSuccess();
+                            PrintingText.Continue();
+                            ProductInfoMenu();
+
+                        }
+                        else if (deleteOrNot == "CANCEL")
+                        {
+                            PrintingText.Loading();
+                            PrintingText.PrintTitle();
+                            PrintingText.Continue();
+                            ProductInfoMenu();
+                        }
+
+                        else
+                        {
+                            PrintingText.InvalidSelection();
+                            PrintingText.Continue();
+                            PrintingText.Loading();
+                            ProductInfoMenu();
+                        }
                         ForegroundColor = previousColor;
+                        Console.WriteLine(deleteOrNot);
+                        ReadKey();
+
+
                     }
                     if (userChoice == 1)
                     {

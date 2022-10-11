@@ -54,7 +54,7 @@ namespace BestBuyPro.Printing
             Clear();
             ConsoleColor previousColor = ForegroundColor;
             ForegroundColor = ConsoleColor.Red;
-            WriteLine("------------------------------------------------------------------------");
+            WriteLine("------------------------------------------------------------------------\n");
             WriteLine(@" ██████  █████  ██    ██ ████████ ██  ██████  ███    ██ 
 ██      ██   ██ ██    ██    ██    ██ ██    ██ ████   ██ 
 ██      ███████ ██    ██    ██    ██ ██    ██ ██ ██  ██ 
