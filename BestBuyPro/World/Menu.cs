@@ -171,13 +171,15 @@ namespace BestBuyPro.Menu
                 WriteLine("\nPlease Add a New Product to the Best Buy DataBase\n");
                 Write("> Please Enter a Product Name: ");
                 var name = ReadLine().Trim() ?? "Default";
-                Write("\n> Please Enter the  Product Price: ");
+                PrintingText.PrintTitle();
+                Write("\n> Please Enter the Product Price: ");
                 var parse = double.TryParse(ReadLine(), out double price);
                 if (!parse)
                 {
                     PrintingText.InvalidSelection();
                     AddAProduct();
                 }
+                PrintingText.PrintTitle();
                 Write("\n> Please Enter a CategoryId (1-10): ");
                 var parse2 = int.TryParse(ReadLine(), out int categoryId);
                 if (!parse2)
@@ -185,13 +187,19 @@ namespace BestBuyPro.Menu
                     PrintingText.InvalidSelection();
                     AddAProduct();
                 }
-                Write("\n> Is the Product on Sale? ");
-                var parse3 = int.TryParse(ReadLine(), out int sale);
-                if (!parse3)
+                string prompt1 = "Is the Product on Sale";
+                string[] options1 = { "Yes", "No" };
+                int sale = 0;
+                var userChoice = PrintingText.PrintCustomMenu(prompt1, options1);
+                if (userChoice == 0)
                 {
-                    PrintingText.InvalidSelection();
-                    AddAProduct();
+                    sale = 1;
                 }
+                if (userChoice == 1)
+                {
+                    sale = 0;
+                }
+                PrintingText.PrintTitle();
                 Write("\n> Please Enter the Item Stock Amount: ");
                 var parse4 = int.TryParse(ReadLine(), out int stock);
                 if (!parse4)
@@ -199,20 +207,8 @@ namespace BestBuyPro.Menu
                     PrintingText.InvalidSelection();
                     AddAProduct();
                 }
-                string prompt1 = "Is the Product on Sale";
-                string[] options1 = { "Yes", "No" };
-                var userChoice = PrintingText.PrintCustomMenu(prompt1, options1);
-                if (userChoice == 0)
-                {
-
-                }
-                if (userChoice == 1)
-                {
-
-                }
                 var stockString = Convert.ToString(stock);
-                WriteLine("Dont press enter");
-                ReadKey();
+
                 Repo.InsertProduct(name, price, categoryId, sale, stockString);
                 var products = Repo.GetProducts();
                 var product = products.FirstOrDefault(pro => pro.Name == name);
@@ -222,8 +218,8 @@ namespace BestBuyPro.Menu
                 PrintingText.Continue();
                 PrintingText.PrintTitle();
                 PrintingText.DisplayProduct(product);
-                ReadKey();
-
+                PrintingText.Continue();
+                ProductInfoMenu();
                 ForegroundColor = previousColor;
             }
             else

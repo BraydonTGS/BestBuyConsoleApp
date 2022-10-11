@@ -42,7 +42,7 @@ namespace BestBuyPro.Printing
                 WriteLine($"\n{prefix} * {currentChoice} *");
 
             }
-            ResetColor();
+
         }
 
         // Running the Menu //

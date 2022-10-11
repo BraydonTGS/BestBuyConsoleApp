@@ -85,8 +85,6 @@ namespace BestBuyPro.Printing
         }
 
         // Display Product //
-
-
         public static void DisplayProduct(Product product)
         {
             ConsoleColor previousColor = ForegroundColor;
