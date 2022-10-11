@@ -46,7 +46,7 @@ namespace BestBuyPro.Menu
         {
             PrintingText.PrintTitle();
             string prompt = "Please Select From the Following Options: ";
-            string[] options = { "Display Products", "Search for a Product", "Add a New Product", "Delete a Product", "Exit" };
+            string[] options = { "Display Products", "Search for a Product", "Add a New Product", "Update an Existing Product", "Delete a Product", "Exit" };
             var menuIndex = PrintingText.PrintCustomMenu(prompt, options);
             switch (menuIndex)
             {
@@ -208,13 +208,11 @@ namespace BestBuyPro.Menu
                     AddAProduct();
                 }
                 var stockString = Convert.ToString(stock);
-
                 Repo.InsertProduct(name, price, categoryId, sale, stockString);
                 var products = Repo.GetProducts();
                 var product = products.FirstOrDefault(pro => pro.Name == name);
                 PrintingText.Loading();
-                PrintingText.PrintTitle();
-                WriteLine("\n> Success!!!");
+                PrintingText.PrintSuccess();
                 PrintingText.Continue();
                 PrintingText.PrintTitle();
                 PrintingText.DisplayProduct(product);

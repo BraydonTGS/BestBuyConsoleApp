@@ -34,6 +34,20 @@ namespace BestBuyPro.Printing
             ForegroundColor = previousColor;
         }
 
+        // Success //
+        public static void PrintSuccess()
+        {
+            Clear();
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Green;
+            WriteLine("------------------------------------------------------------------------");
+            WriteLine(@" +-+-+-+-+-+-+-+-+-+-+
+ |S|u|c|c|e|s|s|!|!|!|
+ +-+-+-+-+-+-+-+-+-+-+");
+            WriteLine("------------------------------------------------------------------------");
+            ForegroundColor = previousColor;
+        }
+
         // Printing a Custom Menu //
         public static int PrintCustomMenu(string prompt, string[] options)
         {
