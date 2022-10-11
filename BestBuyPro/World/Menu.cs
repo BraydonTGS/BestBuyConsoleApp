@@ -107,7 +107,7 @@ namespace BestBuyPro.Menu
                 }
 
                 WriteLine($"\n> You entered * {num} *\n");
-                string prompt = "Use This Product ID Number? ";
+                string prompt = "Use This Product Identification Number? ";
                 string[] options = { "Yes", "No" };
                 var userResponse = PrintingText.PrintCustomMenu(prompt, options);
                 if (userResponse == 0)
@@ -133,9 +133,22 @@ namespace BestBuyPro.Menu
             }
             else
             {
-                PrintingText.PrintTitle();
+                PrintingText.SearchResults();
                 PrintingText.DisplayProduct(product);
                 PrintingText.Continue();
+                PrintingText.PrintTitle();
+                string prompt = "Would you like to search for more Products?";
+                string[] options = { "Yes", "No" };
+                var userSelection = PrintingText.PrintCustomMenu(prompt, options);
+                if (userSelection == 0)
+                {
+                    SearchForProduct();
+                }
+                if (userSelection == 1)
+                {
+                    PrintingText.Loading();
+                    ProductInfoMenu();
+                }
                 ForegroundColor = previousColor;
             }
         }

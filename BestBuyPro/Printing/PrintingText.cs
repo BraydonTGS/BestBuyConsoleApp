@@ -20,6 +20,20 @@ namespace BestBuyPro.Printing
             ForegroundColor = previousColor;
         }
 
+        // Search Results //
+        public static void SearchResults()
+        {
+            Clear();
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Green;
+            WriteLine("------------------------------------------------------------------------");
+            WriteLine(@" +-+-+-+-+-+-+ +-+-+-+-+-+-+-+
+ |S|e|a|r|c|h| |R|e|s|u|l|t|s|
+ +-+-+-+-+-+-+ +-+-+-+-+-+-+-+");
+            WriteLine("------------------------------------------------------------------------");
+            ForegroundColor = previousColor;
+        }
+
         // Printing a Custom Menu //
         public static int PrintCustomMenu(string prompt, string[] options)
         {
@@ -77,7 +91,6 @@ namespace BestBuyPro.Printing
         {
             ConsoleColor previousColor = ForegroundColor;
             ForegroundColor = ConsoleColor.Green;
-            WriteLine("\n> SEARCH RESULTS");
             WriteLine("------------------------------------------------------------------------\n");
             WriteLine($"----------> {product.Name} <---------------\n");
             WriteLine($"> Product ID: {product.ProductId}\n");
