@@ -1,5 +1,5 @@
-﻿using BestBuyPro.World;
+﻿using BestBuyPro.Menu;
 
-var bestBuyDb = new World();
+var bestBuyDb = new Menu();
 
 bestBuyDb.Run();

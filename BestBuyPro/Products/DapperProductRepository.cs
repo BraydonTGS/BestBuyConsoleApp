@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using Dapper;
 
 namespace BestBuyPro.Products
 {
@@ -13,9 +14,15 @@ namespace BestBuyPro.Products
             _connection = connection;
         }
 
+        // List All Products - Limit 50 //
         public IEnumerable<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return _connection.Query<Product>("SELECT * FROM Products p ORDER BY p.ProductId DESC LIMIT 50;");
+        }
+
+        public IEnumerable<Product> SearchForProduct()
+        {
+            return _connection.Query<Product>("SELECT * FROM Products p ORDER BY p.ProductId DESC LIMIT 50;");
         }
     }
 }

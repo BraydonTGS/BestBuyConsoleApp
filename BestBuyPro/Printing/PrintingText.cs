@@ -1,4 +1,5 @@
 ﻿using System;
+using BestBuyPro.Products;
 using static System.Console;
 namespace BestBuyPro.Printing
 {
@@ -11,10 +12,11 @@ namespace BestBuyPro.Printing
             Clear();
             ConsoleColor previousColor = ForegroundColor;
             ForegroundColor = ConsoleColor.Green;
-
+            WriteLine("------------------------------------------------------------------------");
             WriteLine(@" +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+
  |P|r|o|d|u|c|t| |M|a|n|a|g|e|r| |3|0|0|0|
  +-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+ +-+-+-+-+");
+            WriteLine("------------------------------------------------------------------------");
             ForegroundColor = previousColor;
         }
 
@@ -50,6 +52,23 @@ namespace BestBuyPro.Printing
             }
             ForegroundColor = previousColor;
         }
+
+        //Display Products //
+        public static void DisplayProducts(IEnumerable<Product> products)
+        {
+            ConsoleColor previousColor = ForegroundColor;
+            ForegroundColor = ConsoleColor.Green;
+            foreach (var product in products)
+            {
+                WriteLine("------------------------------------------------------------------------");
+                WriteLine($"> ProductId: {product.ProductId}\n> Name: {product.Name}\n> Price: {product.Price}\n> CategoryId: {product.CategoryId}\n> OnSale: {product.OnSale}\n> Stock Level: {product.StockLevel}");
+                WriteLine("------------------------------------------------------------------------");
+                Thread.Sleep(100);
+            }
+
+            ForegroundColor = previousColor;
+        }
+
 
         // Exit the Game //
         public static void Exit()

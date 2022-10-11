@@ -3,20 +3,23 @@ using System.Data;
 using System.Data.Common;
 using BestBuyPro.Connections;
 using BestBuyPro.Printing;
+using BestBuyPro.Products;
 using Microsoft.Extensions.Configuration;
 using MySql.Data.MySqlClient;
 using static System.Console;
 using static Org.BouncyCastle.Math.EC.ECCurve;
 
-namespace BestBuyPro.World
+namespace BestBuyPro.Menu
 {
     public class Menu
     {
         private BBConnection NewConnection;
+        private DapperProductRepository Repo;
 
         public Menu()
         {
             NewConnection = new BBConnection();
+            Repo = new DapperProductRepository(NewConnection.GetConnection());
         }
 
         // Start of the Program //
@@ -24,9 +27,9 @@ namespace BestBuyPro.World
         {
 
             Title = "Best Buy Product Manager 3000";
-            PrintingText.Loading();
-            PrintingText.PrintTitle();
-            PrintingText.Continue();
+            //PrintingText.Loading();
+            //PrintingText.PrintTitle();
+            //PrintingText.Continue();
             ProductInfoMenu();
 
         }
@@ -66,30 +69,41 @@ namespace BestBuyPro.World
 
 
             }
-            ReadKey();
         }
 
         // Display Products //
         public void DisplayProducts()
         {
+            PrintingText.Loading();
+            PrintingText.PrintTitle();
+            var products = Repo.GetProducts();
+            PrintingText.DisplayProducts(products);
+            PrintingText.Continue();
+            ProductInfoMenu();
 
         }
 
         // Search for a Product //
         public void SearchForProduct()
         {
-
+            WriteLine("Test");
+            PrintingText.Continue();
+            ProductInfoMenu();
         }
         // Add a new Product //
         public void AddAProduct()
         {
-
+            WriteLine("Test");
+            PrintingText.Continue();
+            ProductInfoMenu();
         }
 
         // Delete a Product //
         public void DeleteAProduct()
         {
-
+            WriteLine("Test");
+            PrintingText.Continue();
+            ProductInfoMenu();
         }
 
         // Exit //
