@@ -28,9 +28,9 @@ namespace BestBuyPro.Menu
         {
 
             Title = "Best Buy Product Manager 3000";
-            //PrintingText.Loading();
-            //PrintingText.PrintTitle();
-            //PrintingText.Continue();
+            PrintingText.Loading();
+            PrintingText.PrintTitle();
+            PrintingText.Continue();
             ProductInfoMenu();
 
         }
