@@ -17,7 +17,7 @@ namespace BestBuyPro.Products
         // List All Products - Limit 50 //
         public IEnumerable<Product> GetProducts()
         {
-            return _connection.Query<Product>("SELECT * FROM Products p ORDER BY p.ProductId DESC LIMIT 50;");
+            return _connection.Query<Product>("SELECT * FROM Products p ORDER BY p.ProductId DESC LIMIT 100;");
         }
 
         public IEnumerable<Product> SearchForProduct(int prodID)

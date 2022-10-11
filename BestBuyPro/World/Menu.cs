@@ -67,8 +67,6 @@ namespace BestBuyPro.Menu
                     break;
                 default:
                     break;
-
-
             }
         }
 
@@ -156,9 +154,22 @@ namespace BestBuyPro.Menu
         // Add a new Product //
         public void AddAProduct()
         {
-            WriteLine("Test");
-            PrintingText.Continue();
-            ProductInfoMenu();
+            PrintingText.Loading();
+            PrintingText.PrintTitle();
+            string prompt = "Would You like to Add a New Product to the Database? ";
+            string[] options = { "Yes", "No" };
+            var userSelection = PrintingText.PrintCustomMenu(prompt, options);
+            if (userSelection == 0)
+            {
+
+            }
+            else
+            {
+                PrintingText.Loading();
+                PrintingText.Continue();
+                PrintingText.Loading();
+                ProductInfoMenu();
+            }
         }
 
         // Delete a Product //
